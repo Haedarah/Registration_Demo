@@ -47,7 +47,7 @@ contract Registration
         string memory _mobile_number,
         address _wallet_address) public
     {
-        require(registered_users[msg.sender]!=0, "Already registered") ;
+        require(registered_users[msg.sender]==0, "Already registered") ;
 
         UserData memory data = UserData({
             kind: _kind,
