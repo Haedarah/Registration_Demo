@@ -69,7 +69,7 @@ contract Registration
     //Displaying users information
     function getAllUsers() public view returns (UserData[] memory) 
     {
-        require(registered_users[msg.sender]!=0, "This data is accessable only by registered users.") ;
+        require(registered_users[msg.sender]!=0 || msg.sender == owner, "This data is accessable only by registered users.") ;
         return users ;
     }
 
@@ -77,7 +77,7 @@ contract Registration
     // so they can be excluded from any database or tables.
     function getIgnoredUsers() public view returns (uint256[] memory) 
     {
-        require(registered_users[msg.sender]!=0, "This data is accessable only by registered users.") ;
+        require(registered_users[msg.sender]!=0 || msg.sender == owner, "This data is accessable only by registered users.") ;
         return ignored_registrations ;
     }
 
